@@ -50,7 +50,7 @@ class Post extends Model
 
     public function getExcerpt()
     {
-        return Str::limit(strip_tags($this->body), 150);
+        return Str::limit(strip_tags($this->body), 100);
     }
 
     public function getReadingTime()

@@ -1,3 +1,3 @@
-<header class=""">
+<header class="mx-auto">
     <livewire:navigation-menu />
 </header>

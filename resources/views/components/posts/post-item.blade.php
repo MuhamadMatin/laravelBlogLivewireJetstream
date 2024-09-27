@@ -1,16 +1,18 @@
 @props(['post'])
 <article {{ $attributes->merge(['class' => '[&:not(:last-child)]:border-b border-gray-100 pb-10']) }}>
-    <div class="grid items-start grid-cols-12 gap-3 mt-5 article-body">
-        <div class="flex items-center col-span-4 article-thumbnail">
+    <div class="grid grid-cols-3 gap-3 mt-5 md:items-start md:grid-cols-12 article-body">
+        <div class="flex items-center col-span-12 mx-auto md:col-span-4 article-thumbnail">
             <a wire:navigate href="{{ route('blog.show', $post->slug) }}">
-                <img class="mx-auto mw-100 rounded-xl" src="{{ $post->getImage() }}" alt="thumbnail">
+                <img class="w-full mx-auto mw-100 rounded-xl" src="{{ $post->getImage() }}" alt="thumbnail">
             </a>
         </div>
-        <div class="col-span-8">
-            <div class="flex items-center py-1 text-sm article-meta">
-                <img class="mr-3 rounded-full w-7 h-7" src="{{ $post->author->profile_photo_url }}" alt="avatar">
-                <span class="mr-1 text-xs">{{ $post->author->name }}</span>
-                <span class="text-xs text-gray-500">{{ $post->created_at->diffForHumans() }}</span>
+        <div class="col-span-12 md:col-span-8">
+            <div class="flex items-center justify-between py-1 text-sm article-meta">
+                <span class="flex items-center">
+                    <img class="mr-3 rounded-full w-7 h-7" src="{{ $post->author->profile_photo_url }}" alt="avatar">
+                    <p class="mr-1 text-xs">{{ $post->author->name }}</p>
+                </span>
+                <p class="text-xs text-gray-500">{{ $post->created_at->diffForHumans() }}</p>
             </div>
             <h2 class="text-xl font-bold text-gray-900">
                 <a wire:navigate href="{{ route('blog.show', $post->slug) }}">

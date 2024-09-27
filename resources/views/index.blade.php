@@ -12,46 +12,50 @@
                 Reading</a>
         </div>
     @endsection
-    <main class="container flex flex-grow px-5 mx-auto">
+    <main class="container flex flex-grow mx-auto">
         <div class="mx-auto mb-10">
-            <div class="mb-16">
-                <h2 class="mt-16 mb-5 text-3xl font-bold text-teal-500">Featured Posts</h2>
-                <div class="w-full">
+            @if ($featuredPosts)
+                <div class="mb-16">
+                    <h2 class="mt-16 mb-5 text-3xl font-bold text-teal-500">Featured Posts</h2>
+                    <div class="w-full">
+                        <div class="grid w-full grid-cols-3 gap-10">
+                            @forelse ($featuredPosts as $featured)
+                                <div class="col-span-3 md:col-span-1">
+                                    <x-posts.post-card :post="$featured" />
+                                </div>
+                            @empty
+                                <div class="col-span-3 md:col-span-1">
+                                    Empty Featured Posts
+                                </div>
+                            @endforelse
+                        </div>
+                    </div>
+                    <a wire:navigate class="block mt-10 text-lg font-semibold text-center text-teal-500"
+                        href="http://127.0.0.1:8000/blog">More
+                        Posts</a>
+                </div>
+            @endif
+            {{-- <hr> --}}
+
+            @if ($lastestPosts)
+                <h2 class="mt-16 mb-5 text-3xl font-bold text-teal-500">Latest Posts</h2>
+                <div class="w-full mb-5">
                     <div class="grid w-full grid-cols-3 gap-10">
-                        @forelse ($featuredPosts as $featured)
+                        @forelse ($lastestPosts as $lastest)
                             <div class="col-span-3 md:col-span-1">
-                                <x-posts.post-card :post="$featured" />
+                                <x-posts.post-card :post="$lastest" />
                             </div>
                         @empty
                             <div class="col-span-3 md:col-span-1">
-                                Empty Featured Posts
+                                Empty Lastest Posts
                             </div>
                         @endforelse
                     </div>
+                    <a wire:navigate class="block mt-10 text-lg font-semibold text-center text-teal-500"
+                        href="http://127.0.0.1:8000/blog">More
+                        Posts</a>
                 </div>
-                <a wire:navigate class="block mt-10 text-lg font-semibold text-center text-teal-500"
-                    href="http://127.0.0.1:8000/blog">More
-                    Posts</a>
-            </div>
-            <hr>
-
-            <h2 class="mt-16 mb-5 text-3xl font-bold text-teal-500">Latest Posts</h2>
-            <div class="w-full mb-5">
-                <div class="grid w-full grid-cols-3 gap-10">
-                    @forelse ($lastestPosts as $lastest)
-                        <div class="col-span-3 md:col-span-1">
-                            <x-posts.post-card :post="$lastest" />
-                        </div>
-                    @empty
-                        <div class="col-span-3 md:col-span-1">
-                            Empty Lastest Posts
-                        </div>
-                    @endforelse
-                </div>
-            </div>
-            <a wire:navigate class="block mt-10 text-lg font-semibold text-center text-teal-500"
-                href="http://127.0.0.1:8000/blog">More
-                Posts</a>
+            @endif
         </div>
     </main>
 </x-app-layout>

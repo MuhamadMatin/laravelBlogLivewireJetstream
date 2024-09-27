@@ -1,4 +1,4 @@
-<nav class="flex items-center justify-between px-6 py-3 border-b border-gray-100">
+<nav class="flex items-center justify-between w-full px-6 py-3">
     <div id="nav-left" class="flex items-center">
         <a wire:navigate href="{{ route('index') }}">
             <x-application-mark />

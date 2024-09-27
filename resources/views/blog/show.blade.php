@@ -36,6 +36,7 @@
                 {!! $post->body !!}
             </div>
 
+            {{-- <x-comments::index :model="$post" /> --}}
             {{-- <div class="flex items-center mt-10 space-x-4">
                 <a href="#" class="px-3 py-1 text-base text-white bg-blue-400 rounded-xl">
                     Tailwind</a>
